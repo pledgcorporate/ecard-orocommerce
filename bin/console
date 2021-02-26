@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# In CI, we must pass the -T flag because there is no TTY
+TTY_OPTION=$(tty -s && echo "" || echo "-T" )
+
+CONTAINER_NAME="orocommerce"
+CONTAINER_ID="$(docker-compose ps -q ${CONTAINER_NAME})"
+CONTAINER_INSTANCE="$(docker ps --filter="id=${CONTAINER_ID}" -q)"
+if [[ -z ${CONTAINER_INSTANCE} ]]; then
+    docker-compose run --user www-data  ${TTY_OPTION} --rm --entrypoint php ${CONTAINER_NAME} bin/console "$@"
+else
+    docker-compose exec --user www-data  ${TTY_OPTION} ${CONTAINER_NAME} php bin/console "$@" --env=prod
+fi

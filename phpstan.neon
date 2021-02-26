@@ -1,0 +1,8 @@
+parameters:
+    reportUnmatchedIgnoredErrors: false
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+
+    excludes_analyse:
+        # Makes PHPStan crash
+        - 'src/DependencyInjection/Configuration.php'

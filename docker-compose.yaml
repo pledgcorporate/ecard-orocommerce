@@ -1,0 +1,37 @@
+version: '3.7'
+
+services:
+    postgres:
+        hostname: postgres
+        container_name: postgres_orocommerce
+        image: postgres:9.6
+        volumes:
+            - .docker/shared/db:/var/lib/postgresql/data
+        environment:
+            POSTGRES_DB: orocommerce
+            POSTGRES_PASSWORD: 123456
+        expose:
+            - "5432"
+
+    orocommerce:
+        build:
+            context: .docker/
+        container_name: orocommerce
+        ports:
+            - 127.0.0.1:8085:80
+        volumes:
+            - .docker/shared/attachment:/var/www/orocommerce/var/attachment
+            - .docker/shared/media:/var/www/orocommerce/public/media
+            - .docker/shared/uploads:/var/www/orocommerce/public/uploads
+            - ./src:/var/www/orocommerce/src/Pledg/Bundle/PaymentBundle
+            - ./:/var/www/module/
+        environment:
+            # installation options
+            ORO_DATABASE_DRIVER: pdo_pgsql
+            ORO_DATABASE_HOST: postgres
+            ORO_DATABASE_PORT: 5432
+            ORO_DATABASE_USER: postgres
+            ORO_DATABASE_NAME: orocommerce
+            ORO_DATABASE_PASSWORD: 123456
+            ORO_PLATFORM: 4.2.1
+            TRUSTED_PROXIES: 172.16.0.0/12

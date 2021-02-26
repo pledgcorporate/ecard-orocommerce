@@ -1,0 +1,38 @@
+{
+  "name": "pledg/orocommerce",
+  "type": "symfony-bundle",
+  "keywords": [
+    "pledg",
+    "payments",
+    "gateway",
+    "oro"
+  ],
+  "description": "Module Pledg for OroCommerce",
+  "license": "OSL-3.0",
+  "require": {
+    "php": "^7.3",
+    "oro/commerce": "^4.2"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-master",
+    "phpstan/phpstan": "^0.12.79",
+    "phpunit/phpunit": "^9.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Pledg\\Bundle\\PaymentBundle\\": "src/"
+
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\Pledg\\Bundle\\PaymentBundle\\": "tests/"
+    }
+  },
+  "repositories": {
+    "oro": {
+      "type": "composer",
+      "url": "https://packagist.orocrm.com"
+    }
+  }
+}

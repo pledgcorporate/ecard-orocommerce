@@ -1,0 +1,11 @@
+/.settings
+/.buildpath
+/.project
+/.idea
+/.docker/shared
+/composer.phar
+composer.lock
+/vendor
+phpunit.xml
+.phpunit.result.cache
+/docker-compose.override.yml
