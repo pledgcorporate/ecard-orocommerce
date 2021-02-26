@@ -1,0 +1,22 @@
+parameters:
+    pledg_payment.method.identifier_prefix.pledg: 'pledg'
+services:
+    _defaults:
+        public: false
+
+    pledg_payment.generator.pledg_config_identifier:
+        parent: oro_integration.generator.prefixed_identifier_generator
+        public: true
+        arguments:
+            - '%pledg_payment.method.identifier_prefix.pledg%'
+
+    pledg_payment.integration.channel:
+        class: Pledg\Bundle\PaymentBundle\Integration\PledgChannelType
+        public: true
+        tags:
+            - { name: oro_integration.channel, type: pledg }
+
+    pledg_payment.integration.transport:
+        class: Pledg\Bundle\PaymentBundle\Integration\PledgTransport
+        tags:
+            - { name: oro_integration.transport, type: pledg, channel_type: pledg }

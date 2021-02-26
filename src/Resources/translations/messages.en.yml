@@ -1,0 +1,8 @@
+pledg:
+    settings:
+        labels.label: 'Labels'
+        short_labels.label: 'Short Labels'
+        transport.label: 'Pledg'
+
+    channel_type.label: 'Pledg'
+    payment_method_message: 'Pay on Pledg'
