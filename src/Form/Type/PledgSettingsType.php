@@ -6,6 +6,7 @@ namespace Pledg\Bundle\PaymentBundle\Form\Type;
 use Oro\Bundle\LocaleBundle\Form\Type\LocalizedFallbackValueCollectionType;
 use Pledg\Bundle\PaymentBundle\Entity\PledgSettings;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -34,6 +35,24 @@ class PledgSettingsType extends AbstractType
                 LocalizedFallbackValueCollectionType::class,
                 [
                     'label' => 'pledg.settings.short_labels.label',
+                    'required' => true,
+                    'entry_options' => ['constraints' => [new NotBlank()]],
+                ]
+            )
+            ->add(
+                'clientIdentifier',
+                TextType::class,
+                [
+                    'label'    => 'pledg.settings.client_identifier.label',
+                    'required' => true,
+                    'entry_options' => ['constraints' => [new NotBlank()]],
+                ]
+            )
+            ->add(
+                'clientSecret',
+                TextType::class,
+                [
+                    'label'    => 'pledg.settings.client_secret.label',
                     'required' => true,
                     'entry_options' => ['constraints' => [new NotBlank()]],
                 ]

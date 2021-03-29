@@ -17,6 +17,20 @@ use Symfony\Component\HttpFoundation\ParameterBag;
 class PledgSettings extends Transport
 {
     /**
+     * @var string
+     *
+     * @ORM\Column(name="pledg_client_identifier", type="string", length=255, nullable=false)
+     */
+    protected $clientIdentifier;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pledg_client_secret", type="string", length=255, nullable=false)
+     */
+    protected $clientSecret;
+
+    /**
      * @var Collection|LocalizedFallbackValue[]
      *
      * @ORM\ManyToMany(
@@ -66,6 +80,40 @@ class PledgSettings extends Transport
         $this->labels = new ArrayCollection();
         $this->shortLabels = new ArrayCollection();
     }
+
+    /**
+     * @return string
+     */
+    public function getClientIdentifier(): string
+    {
+        return $this->clientIdentifier;
+    }
+
+    /**
+     * @param string $clientIdentifier
+     */
+    public function setClientIdentifier(string $clientIdentifier): void
+    {
+        $this->clientIdentifier = $clientIdentifier;
+    }
+
+    /**
+     * @return string
+     */
+    public function getClientSecret(): string
+    {
+        return $this->clientSecret;
+    }
+
+    /**
+     * @param string $clientSecret
+     */
+    public function setClientSecret(string $clientSecret): void
+    {
+        $this->clientSecret = $clientSecret;
+    }
+
+
 
     /**
      * @return Collection|LocalizedFallbackValue[]
@@ -125,6 +173,9 @@ class PledgSettings extends Transport
             $this->settings = new ParameterBag(
                 [
                     'labels' => $this->getLabels()->toArray(),
+                    'short_labels' => $this->getShortLabels(),
+                    'identifier' => $this->getClientIdentifier(),
+                    'secret' => $this->getClientSecret()
                 ]
             );
         }
