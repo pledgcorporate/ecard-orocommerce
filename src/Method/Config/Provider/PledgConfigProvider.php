@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Pledg\Bundle\PaymentBundle\PaymentMethod\Config\Provider;
+namespace Pledg\Bundle\PaymentBundle\Method\Config\Provider;
 
 
 use Doctrine\Persistence\ManagerRegistry;
-use Pledg\Bundle\PaymentBundle\PaymentMethod\Config\Factory\PledgConfigFactoryInterface;
-use Pledg\Bundle\PaymentBundle\PaymentMethod\Config\PledgConfigInterface;
+use Pledg\Bundle\PaymentBundle\Method\Config\Factory\PledgConfigFactoryInterface;
+use Pledg\Bundle\PaymentBundle\Method\Config\PledgConfigInterface;
 use Pledg\Bundle\PaymentBundle\Entity\PledgSettings;
 use Pledg\Bundle\PaymentBundle\Repository\PledgSettingsRepository;
 use Psr\Log\LoggerInterface;

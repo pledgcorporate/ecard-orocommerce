@@ -1,10 +1,10 @@
 <?php
 
-namespace Pledg\Bundle\PaymentBundle\PaymentMethod\View;
+namespace Pledg\Bundle\PaymentBundle\Method\View;
 
 use Oro\Bundle\PaymentBundle\Context\PaymentContextInterface;
 use Oro\Bundle\PaymentBundle\Method\View\PaymentMethodViewInterface;
-use Pledg\Bundle\PaymentBundle\PaymentMethod\Config\PledgConfigInterface;
+use Pledg\Bundle\PaymentBundle\Method\Config\PledgConfigInterface;
 
 class PledgView implements PaymentMethodViewInterface
 {

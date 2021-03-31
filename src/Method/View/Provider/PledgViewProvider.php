@@ -1,11 +1,11 @@
 <?php
 
-namespace Pledg\Bundle\PaymentBundle\PaymentMethod\View\Provider;
+namespace Pledg\Bundle\PaymentBundle\Method\View\Provider;
 
 use Oro\Bundle\PaymentBundle\Method\View\AbstractPaymentMethodViewProvider;
-use Pledg\Bundle\PaymentBundle\PaymentMethod\Config\PledgConfigInterface;
-use Pledg\Bundle\PaymentBundle\PaymentMethod\Config\Provider\PledgConfigProviderInterface;
-use Pledg\Bundle\PaymentBundle\PaymentMethod\View\Factory\PledgViewFactoryInterface;
+use Pledg\Bundle\PaymentBundle\Method\Config\PledgConfigInterface;
+use Pledg\Bundle\PaymentBundle\Method\Config\Provider\PledgConfigProviderInterface;
+use Pledg\Bundle\PaymentBundle\Method\View\Factory\PledgViewFactoryInterface;
 
 class PledgViewProvider extends AbstractPaymentMethodViewProvider
 {

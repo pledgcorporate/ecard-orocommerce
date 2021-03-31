@@ -1,8 +1,8 @@
 <?php
 
-namespace Pledg\Bundle\PaymentBundle\PaymentMethod\Config\Provider;
+namespace Pledg\Bundle\PaymentBundle\Method\Config\Provider;
 
-use Pledg\Bundle\PaymentBundle\PaymentMethod\Config\PledgConfigInterface;
+use Pledg\Bundle\PaymentBundle\Method\Config\PledgConfigInterface;
 
 interface PledgConfigProviderInterface
 {

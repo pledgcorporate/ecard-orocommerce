@@ -1,6 +1,6 @@
 <?php
 
-namespace Pledg\Bundle\PaymentBundle\PaymentMethod\Config\Factory;
+namespace Pledg\Bundle\PaymentBundle\Method\Config\Factory;
 
 use Pledg\Bundle\PaymentBundle\Entity\PledgSettings;
 

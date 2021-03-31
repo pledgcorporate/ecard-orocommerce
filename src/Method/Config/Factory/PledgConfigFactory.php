@@ -1,11 +1,11 @@
 <?php
 
-namespace Pledg\Bundle\PaymentBundle\PaymentMethod\Config\Factory;
+namespace Pledg\Bundle\PaymentBundle\Method\Config\Factory;
 
 use Doctrine\Common\Collections\Collection;
 use Oro\Bundle\IntegrationBundle\Generator\IntegrationIdentifierGeneratorInterface;
 use Oro\Bundle\LocaleBundle\Helper\LocalizationHelper;
-use Pledg\Bundle\PaymentBundle\PaymentMethod\Config\PledgConfig;
+use Pledg\Bundle\PaymentBundle\Method\Config\PledgConfig;
 use Pledg\Bundle\PaymentBundle\Entity\PledgSettings;
 
 class PledgConfigFactory implements PledgConfigFactoryInterface

@@ -1,6 +1,6 @@
 <?php
 
-namespace Pledg\Bundle\PaymentBundle\PaymentMethod\Config;
+namespace Pledg\Bundle\PaymentBundle\Method\Config;
 
 use Oro\Bundle\PaymentBundle\Method\Config\ParameterBag\AbstractParameterBagPaymentConfig;
 

@@ -12,12 +12,12 @@ services:
 
     pledg_payment.integration.channel: '@Pledg\Bundle\PaymentBundle\Integration\PledgChannelType'
     pledg_payment.integration.transport: '@Pledg\Bundle\PaymentBundle\Integration\PledgTransport'
-    pledg_payment.factory.pledg_config: '@Pledg\Bundle\PaymentBundle\PaymentMethod\Config\Factory\PledgConfigFactory'
-    pledg_payment.payment_method.config.provider: '@Pledg\Bundle\PaymentBundle\PaymentMethod\Config\Provider\PledgConfigProvider'
-    pledg_payment.factory.method_view.pledg: '@Pledg\Bundle\PaymentBundle\PaymentMethod\View\Factory\PledgViewFactory'
-    pledg_payment.payment_method_view_provider.pledg: '@Pledg\Bundle\PaymentBundle\PaymentMethod\View\Provider\PledgViewProvider'
-    pledg_payment.factory.method.pledg: '@Pledg\Bundle\PaymentBundle\PaymentMethod\Factory\PledgPaymentMethodFactory'
-    pldg_payment.payment_method_provider.pledg: '@Pledg\Bundle\PaymentBundle\PaymentMethod\Provider\PledgMethodProvider'
+    pledg_payment.factory.pledg_config: '@Pledg\Bundle\PaymentBundle\Method\Config\Factory\PledgConfigFactory'
+    pledg_payment.payment_method.config.provider: '@Pledg\Bundle\PaymentBundle\Method\Config\Provider\PledgConfigProvider'
+    pledg_payment.factory.method_view.pledg: '@Pledg\Bundle\PaymentBundle\Method\View\Factory\PledgViewFactory'
+    pledg_payment.payment_method_view_provider.pledg: '@Pledg\Bundle\PaymentBundle\Method\View\Provider\PledgViewProvider'
+    pledg_payment.factory.method.pledg: '@Pledg\Bundle\PaymentBundle\Method\Factory\PledgPaymentMethodFactory'
+    pldg_payment.payment_method_provider.pledg: '@Pledg\Bundle\PaymentBundle\Method\Provider\PledgMethodProvider'
 
     Pledg\Bundle\PaymentBundle\Integration\PledgChannelType:
         public: true
@@ -28,22 +28,22 @@ services:
         tags:
             - { name: oro_integration.transport, type: pledg, channel_type: pledg }
 
-    Pledg\Bundle\PaymentBundle\PaymentMethod\Config\Factory\PledgConfigFactory:
+    Pledg\Bundle\PaymentBundle\Method\Config\Factory\PledgConfigFactory:
         public: false
         arguments:
             - '@oro_locale.helper.localization'
             - '@pledg_payment.generator.pledg_config_identifier'
 
-    Pledg\Bundle\PaymentBundle\PaymentMethod\Config\Provider\PledgConfigProvider:
+    Pledg\Bundle\PaymentBundle\Method\Config\Provider\PledgConfigProvider:
         arguments:
             - '@doctrine'
             - '@logger'
             - '@pledg_payment.factory.pledg_config'
 
-    Pledg\Bundle\PaymentBundle\PaymentMethod\View\Factory\PledgViewFactory:
+    Pledg\Bundle\PaymentBundle\Method\View\Factory\PledgViewFactory:
         public: false
 
-    Pledg\Bundle\PaymentBundle\PaymentMethod\View\Provider\PledgViewProvider:
+    Pledg\Bundle\PaymentBundle\Method\View\Provider\PledgViewProvider:
         public: false
         arguments:
             - '@pledg_payment.payment_method.config.provider'
@@ -51,10 +51,10 @@ services:
         tags:
             - { name: oro_payment.payment_method_view_provider }
 
-    Pledg\Bundle\PaymentBundle\PaymentMethod\Factory\PledgPaymentMethodFactory:
+    Pledg\Bundle\PaymentBundle\Method\Factory\PledgPaymentMethodFactory:
         public: false
 
-    Pledg\Bundle\PaymentBundle\PaymentMethod\Provider\PledgMethodProvider:
+    Pledg\Bundle\PaymentBundle\Method\Provider\PledgMethodProvider:
         public: false
         arguments:
             - '@pledg_payment.payment_method.config.provider'

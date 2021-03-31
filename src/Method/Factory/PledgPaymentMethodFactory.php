@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Pledg\Bundle\PaymentBundle\PaymentMethod\Factory;
+namespace Pledg\Bundle\PaymentBundle\Method\Factory;
 
 
-use Pledg\Bundle\PaymentBundle\PaymentMethod\Config\PledgConfigInterface;
-use Pledg\Bundle\PaymentBundle\PaymentMethod\PledgMethod;
+use Pledg\Bundle\PaymentBundle\Method\Config\PledgConfigInterface;
+use Pledg\Bundle\PaymentBundle\Method\PledgMethod;
 
 class PledgPaymentMethodFactory implements PledgPaymentMethodFactoryInterface
 {
