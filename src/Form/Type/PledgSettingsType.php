@@ -27,7 +27,7 @@ class PledgSettingsType extends AbstractType
                 [
                     'label' => 'pledg.settings.labels.label',
                     'required' => true,
-                    'entry_options' => ['constraints' => [new NotBlank()]],
+                    'constraints' => [new NotBlank()]
                 ]
             )
             ->add(
@@ -36,7 +36,7 @@ class PledgSettingsType extends AbstractType
                 [
                     'label' => 'pledg.settings.short_labels.label',
                     'required' => true,
-                    'entry_options' => ['constraints' => [new NotBlank()]],
+                    'constraints' => [new NotBlank()]
                 ]
             )
             ->add(
@@ -45,7 +45,7 @@ class PledgSettingsType extends AbstractType
                 [
                     'label'    => 'pledg.settings.client_identifier.label',
                     'required' => true,
-                    'entry_options' => ['constraints' => [new NotBlank()]],
+                    'constraints' => [new NotBlank()]
                 ]
             )
             ->add(
@@ -54,7 +54,7 @@ class PledgSettingsType extends AbstractType
                 [
                     'label'    => 'pledg.settings.client_secret.label',
                     'required' => true,
-                    'entry_options' => ['constraints' => [new NotBlank()]],
+                    'constraints' => [new NotBlank()]
                 ]
             );
     }

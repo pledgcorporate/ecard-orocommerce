@@ -81,33 +81,22 @@ class PledgSettings extends Transport
         $this->shortLabels = new ArrayCollection();
     }
 
-    /**
-     * @return string
-     */
-    public function getClientIdentifier(): string
+    public function getClientIdentifier(): ?string
     {
         return $this->clientIdentifier;
     }
 
-    /**
-     * @param string $clientIdentifier
-     */
     public function setClientIdentifier(string $clientIdentifier): void
     {
         $this->clientIdentifier = $clientIdentifier;
     }
 
-    /**
-     * @return string
-     */
-    public function getClientSecret(): string
+    public function getClientSecret(): ?string
     {
         return $this->clientSecret;
     }
 
-    /**
-     * @param string $clientSecret
-     */
+
     public function setClientSecret(string $clientSecret): void
     {
         $this->clientSecret = $clientSecret;
