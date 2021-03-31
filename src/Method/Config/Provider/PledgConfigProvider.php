@@ -5,6 +5,7 @@ namespace Pledg\Bundle\PaymentBundle\Method\Config\Provider;
 
 
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ObjectManager;
 use Pledg\Bundle\PaymentBundle\Method\Config\Factory\PledgConfigFactoryInterface;
 use Pledg\Bundle\PaymentBundle\Method\Config\PledgConfigInterface;
 use Pledg\Bundle\PaymentBundle\Entity\PledgSettings;
@@ -94,10 +95,10 @@ class PledgConfigProvider implements PledgConfigProviderInterface
     protected function getEnabledIntegrationSettings()
     {
         try {
+            /** @var ObjectManager $objectManager */
+            $objectManager = $this->doctrine->getManagerForClass(PledgSettings::class);
             /** @var PledgSettingsRepository $repository */
-            $repository = $this->doctrine
-                ->getManagerForClass(PledgSettings::class)
-                ->getRepository(PledgSettings::class);
+            $repository = $objectManager->getRepository(PledgSettings::class);
 
             return $repository->getEnabledSettings();
         } catch (\UnexpectedValueException $e) {

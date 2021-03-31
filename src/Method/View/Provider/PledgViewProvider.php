@@ -43,7 +43,7 @@ class PledgViewProvider extends AbstractPaymentMethodViewProvider
     /**
      * @param PledgConfigInterface $config
      */
-    protected function addPledgView(PledgConfigInterface $config)
+    protected function addPledgView(PledgConfigInterface $config): void
     {
         $this->addView(
             $config->getPaymentMethodIdentifier(),

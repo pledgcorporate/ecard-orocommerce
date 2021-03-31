@@ -6,3 +6,8 @@ parameters:
     excludes_analyse:
         # Makes PHPStan crash
         - 'src/DependencyInjection/Configuration.php'
+
+    ignoreErrors:
+        # because of Symfony and Oro
+        - '#has no return typehint specified#'
+        - '#buildViews\(\) should return#'
