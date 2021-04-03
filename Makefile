@@ -30,7 +30,7 @@ phpstan: composer.lock ## launch phpstan
 	$(DC_EXEC_TEST_PHP) $(MODULE_PATH)vendor/bin/phpstan analyse -c $(MODULE_PATH)phpstan.neon -l max $(MODULE_PATH)src/ $(MODULE_PATH)tests/
 
 phpunit: ## launch phpunit tests
-	$(DC_EXEC_TEST_PHP) $(BIN_PATH)/phpunit --testdox
+	$(DC_EXEC_TEST_PHP) $(MODULE_PATH)vendor/bin/phpunit --testdox -c $(MODULE_PATH)phpunit.xml.dist
 
 composer:
 	$(DC_EXEC_TEST_PHP) composer --working-dir=/var/www/module/ ${args}
