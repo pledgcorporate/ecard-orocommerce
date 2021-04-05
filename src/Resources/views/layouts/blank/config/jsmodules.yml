@@ -1,0 +1,3 @@
+dynamic-imports:
+    pledgpayment:
+        - pledgpayment/js/app/components/pledg-checkout-component

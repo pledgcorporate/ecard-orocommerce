@@ -30,11 +30,10 @@ class PledgMethod implements PaymentMethodInterface
      */
     public function execute($action, PaymentTransaction $paymentTransaction)
     {
-        $paymentTransaction->setAction(PaymentMethodInterface::INVOICE);
-        $paymentTransaction->setActive(true);
-        $paymentTransaction->setSuccessful(true);
+        $paymentTransaction
+            ->setActive(true);
 
-        return [];
+        return ['purchaseRedirectUrl' => 'http://www.google.fr'];
     }
 
     /**

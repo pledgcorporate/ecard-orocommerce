@@ -7,3 +7,11 @@
         </table>
     </div>
 {% endblock %}
+{% block _order_review_payment_methods_pledg_widget %}
+    {% if options.payment_method is defined %}
+        <div class="hidden"
+             data-page-component-module="pledgpayment/js/app/components/pledg-checkout-component"
+             data-page-component-options="{{ {paymentMethod: options.payment_method}|json_encode }}">
+        </div>
+    {% endif %}
+{% endblock %}
