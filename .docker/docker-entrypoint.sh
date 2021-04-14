@@ -30,7 +30,7 @@ docker_install_application() {
 
   sudo --preserve-env=LD_PRELOAD -u www-data php bin/console oro:install --env=prod --user-name="${ADMIN_USER}" --user-email="${ADMIN_EMAIL}" \
       --user-firstname="${ADMIN_FIRST_NAME}" --user-lastname="${ADMIN_LAST_NAME}" \
-      --user-password="${ADMIN_PASSWORD}" --sample-data=n --organization-name="${ORGANIZATION_NAME}" \
+      --user-password="${ADMIN_PASSWORD}" --sample-data=y --organization-name="${ORGANIZATION_NAME}" \
       --no-interaction --application-url="${APPLICATION_URL}" --timeout=3600 --symlink ${SKIP_ASSETS}
 
   # Exacute only this commands
