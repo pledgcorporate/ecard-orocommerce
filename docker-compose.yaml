@@ -18,7 +18,7 @@ services:
             context: .docker/
         container_name: orocommerce
         ports:
-            - 127.0.0.1:8085:80
+            - 8085:80
         volumes:
             - .docker/shared/attachment:/var/www/orocommerce/var/attachment
             - .docker/shared/media:/var/www/orocommerce/public/media

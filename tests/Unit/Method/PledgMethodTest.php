@@ -26,9 +26,12 @@ class PledgMethodTest extends TestCase
 
     public function buildMethod(): PledgMethod
     {
-        return new PledgMethod((new PledgConfigBuilder())
-            ->withDefaultValues()
-            ->build()
-        );
+        return (new PledgMethodBuilder())
+            ->withConfig(
+                (new PledgConfigBuilder())
+                    ->withDefaultValues()
+                ->build()
+            )
+            ->build();
     }
 }

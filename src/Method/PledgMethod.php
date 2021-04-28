@@ -5,24 +5,37 @@ namespace Pledg\Bundle\PaymentBundle\Method;
 use Oro\Bundle\PaymentBundle\Context\PaymentContextInterface;
 use Oro\Bundle\PaymentBundle\Entity\PaymentTransaction;
 use Oro\Bundle\PaymentBundle\Method\PaymentMethodInterface;
+use Pledg\Bundle\PaymentBundle\Factory\ReferenceFactoryInterface;
+use Pledg\Bundle\PaymentBundle\JWT\HandlerInterface;
 use Pledg\Bundle\PaymentBundle\Method\Config\PledgConfigInterface;
+use Pledg\Bundle\PaymentBundle\RedirectUrl\ParametersFactoryInterface;
+use Pledg\Bundle\PaymentBundle\ValueObject\Reference;
 
-/**
- * @todo imlement method
- */
 class PledgMethod implements PaymentMethodInterface
 {
-    /**
-     * @var PledgConfigInterface
-     */
+    /** @var PledgConfigInterface  */
     private $config;
 
-    /**
-     * @param PledgConfigInterface $config
-     */
-    public function __construct(PledgConfigInterface $config)
+    /** @var ParametersFactoryInterface */
+    private $parametersFactory;
+
+    /** @var ReferenceFactoryInterface */
+    private $referenceFactory;
+
+    /** @var HandlerInterface */
+    private $encoder;
+
+    public function __construct(
+        PledgConfigInterface $config,
+        ParametersFactoryInterface $parametersFactory,
+        ReferenceFactoryInterface $referenceFactory,
+        HandlerInterface $encoder
+    )
     {
         $this->config = $config;
+        $this->parametersFactory = $parametersFactory;
+        $this->referenceFactory = $referenceFactory;
+        $this->encoder = $encoder;
     }
 
     /**
@@ -31,9 +44,12 @@ class PledgMethod implements PaymentMethodInterface
     public function execute($action, PaymentTransaction $paymentTransaction)
     {
         $paymentTransaction
-            ->setActive(true);
+            ->setActive(true)
+            ->setReference((string) $this->referenceFactory->fromOrderId($paymentTransaction->getEntityIdentifier()));
 
-        return ['purchaseRedirectUrl' => 'http://www.google.fr'];
+        $parameters = $this->parametersFactory->fromPaymentTransactionAndConfig($paymentTransaction, $this->config);
+
+        return ['purchaseRedirectUrl' => 'https://staging.front.ecard.pledg.co/purchase?signature='. $this->encoder->encode(['data' => $parameters->toArray()], $this->config->getClientSecret())];
     }
 
     /**
