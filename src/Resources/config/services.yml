@@ -22,6 +22,13 @@ services:
 
     Pledg\Bundle\PaymentBundle\Factory\ReferenceFactory: ~
 
+    Pledg\Bundle\PaymentBundle\EventListener\Callback\PledgListener:
+        lazy: true
+        arguments:
+            $listener: '@oro_payment.event_listener.callback.redirect'
+        tags:
+            - { name: kernel.event_listener, event: oro_payment.callback.return, method: __invoke, priority: 20}
+
     Pledg\Bundle\PaymentBundle\Integration\PledgChannelType:
         public: true
         tags:
