@@ -7,7 +7,7 @@ require dirname(__DIR__).'/vendor/autoload.php';
 require_once __DIR__.'/../src/AppKernel.php';
 //require_once __DIR__.'/../src/AppCache.php';
 
-$kernel = new AppKernel('prod', false);
+$kernel = new AppKernel('dev', true);
 
 //$kernel = new AppCache($kernel);
 $request = Request::createFromGlobals();
