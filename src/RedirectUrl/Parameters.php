@@ -39,6 +39,8 @@ class Parameters implements ParametersInterface
     public $redirectUrl;
     /** @var string */
     public $failedUrl;
+    /** @var string */
+    public $notificationUrl;
 
     public function toArray(): array
     {
@@ -58,7 +60,7 @@ class Parameters implements ParametersInterface
             'countryCode' => $this->billingAddress->getCountryIso2(),
             'redirectUrl' => $this->redirectUrl,
             'cancelUrl' => $this->failedUrl,
-            'paymentNotificationUrl' => 'mailto:'. $this->email,
+            'paymentNotificationUrl' => $this->notificationUrl,
         ];
     }
 

@@ -67,6 +67,14 @@ class ParametersFactory implements ParametersFactoryInterface
             ['accessIdentifier' => $paymentTransaction->getAccessIdentifier(),],
             UrlGeneratorInterface::ABSOLUTE_URL
         );
+        $parameters->notificationUrl = $this->router->generate(
+            'oro_payment_callback_notify',
+            [
+                'accessIdentifier' => $paymentTransaction->getAccessIdentifier(),
+                'accessToken' => $paymentTransaction->getAccessToken()
+            ],
+            UrlGeneratorInterface::ABSOLUTE_URL
+        );
         return $parameters;
     }
 }

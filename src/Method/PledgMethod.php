@@ -13,6 +13,8 @@ use Pledg\Bundle\PaymentBundle\ValueObject\Reference;
 
 class PledgMethod implements PaymentMethodInterface
 {
+    public const COMPLETE = 'complete';
+
     /** @var PledgConfigInterface  */
     private $config;
 
@@ -43,13 +45,36 @@ class PledgMethod implements PaymentMethodInterface
      */
     public function execute($action, PaymentTransaction $paymentTransaction)
     {
+        if (!$this->supports($action)) {
+            throw new \InvalidArgumentException(sprintf('Unsupported action "%s"', $action));
+        }
+
+        return $this->{$action}($paymentTransaction);
+    }
+
+    protected function purchase(PaymentTransaction $paymentTransaction): array
+    {
         $paymentTransaction
             ->setActive(true)
             ->setReference((string) $this->referenceFactory->fromOrderId($paymentTransaction->getEntityIdentifier()));
 
         $parameters = $this->parametersFactory->fromPaymentTransactionAndConfig($paymentTransaction, $this->config);
 
-        return ['purchaseRedirectUrl' => 'https://staging.front.ecard.pledg.co/purchase?signature='. $this->encoder->encode(['data' => $parameters->toArray()], $this->config->getClientSecret())];
+        return [
+            'purchaseRedirectUrl' => sprintf(
+                'https://staging.front.ecard.pledg.co/purchase?signature=%s',
+                $this->encoder->encode(['data' => $parameters->toArray()], $this->config->getClientSecret())
+            )
+        ];
+    }
+
+    protected function complete(PaymentTransaction $paymentTransaction): array
+    {
+        $paymentTransaction
+            ->setSuccessful(true)
+            ->setActive(false);
+
+        return ['successful' => true];
     }
 
     /**
@@ -73,6 +98,6 @@ class PledgMethod implements PaymentMethodInterface
      */
     public function supports($actionName)
     {
-        return $actionName === self::PURCHASE;
+        return in_array($actionName, [self::PURCHASE, self::COMPLETE], true);
     }
 }
