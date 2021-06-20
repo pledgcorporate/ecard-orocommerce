@@ -42,12 +42,8 @@ class PledgListener
             return;
         }
 
-        if (isset($event->getData()[self::PLEDG_ERROR])) {
-            $event->markFailed();
-            return;
-        }
-
         if (!isset($event->getData()[self::PLEDG_RESULT])) {
+            $event->markFailed();
             return;
         }
 
