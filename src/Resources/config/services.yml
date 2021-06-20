@@ -11,7 +11,9 @@ services:
     Pledg\Bundle\PaymentBundle\Method\Config\Provider\PledgConfigProviderInterface: '@Pledg\Bundle\PaymentBundle\Method\Config\Provider\PledgConfigProvider'
     Pledg\Bundle\PaymentBundle\Method\View\Factory\PledgViewFactoryInterface: '@Pledg\Bundle\PaymentBundle\Method\View\Factory\PledgViewFactory'
     Pledg\Bundle\PaymentBundle\Method\Factory\PledgPaymentMethodFactoryInterface: '@Pledg\Bundle\PaymentBundle\Method\Factory\PledgPaymentMethodFactory'
+    Pledg\Bundle\PaymentBundle\Notification\Collector\ValidatorInterface: '@Pledg\Bundle\PaymentBundle\Notification\Collector\StandardValidator'
     Pledg\Bundle\PaymentBundle\Provider\OrderProviderInterface: '@Pledg\Bundle\PaymentBundle\Provider\OrderProvider'
+    Pledg\Bundle\PaymentBundle\Provider\PaymentTransactionProviderInterface: '@Pledg\Bundle\PaymentBundle\Provider\PaymentTransactionProvider'
     Pledg\Bundle\PaymentBundle\RedirectUrl\ParametersFactoryInterface: '@Pledg\Bundle\PaymentBundle\RedirectUrl\ParametersFactory'
 
     pledg_payment.generator.pledg_config_identifier:
@@ -67,10 +69,16 @@ services:
 
     Pledg\Bundle\PaymentBundle\Method\Factory\PledgPaymentMethodFactory: ~
 
+    Pledg\Bundle\PaymentBundle\Notification\Collector\StandardValidator: ~
+
     Pledg\Bundle\PaymentBundle\Method\Provider\PledgMethodProvider:
         tags:
             - { name: oro_payment.payment_method_provider }
 
     Pledg\Bundle\PaymentBundle\Provider\OrderProvider: ~
+
+    Pledg\Bundle\PaymentBundle\Provider\PaymentTransactionProvider:
+        arguments:
+            $repository: '@oro_payment.repository.payment_transaction'
 
     Pledg\Bundle\PaymentBundle\RedirectUrl\ParametersFactory: ~

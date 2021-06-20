@@ -17,7 +17,7 @@ class PledgConfigBuilder
             PledgConfig::FIELD_SHORT_LABEL => 'short field label',
             PledgConfig::FIELD_ADMIN_LABEL => 'ecommerce channel',
             PledgConfig::FIELD_CLIENT_IDENTIFIER => '1234567890987654321',
-            PledgConfig::FIELD_CLIENT_SECRET => 'secretsecretsecretsecret',
+            PledgConfig::FIELD_CLIENT_SECRET => 'SECRET',
             PledgConfig::FIELD_PAYMENT_METHOD_IDENTIFIER => 12345
         ];
 
