@@ -56,12 +56,19 @@ class StandardValidator implements ValidatorInterface
 
     public function validate(array $content): bool
     {
-        return $this->withoutError($content) && $this->validateSignature($content);
+        return $this->withoutError($content)
+            && $this->validateStatus($content)
+            && $this->validateSignature($content);
     }
 
     protected function withoutError(array $content): bool
     {
         return empty($content['error']);
+    }
+
+    protected function validateStatus(array $content): bool
+    {
+        return 'completed' === $content['status'];
     }
 
     protected function validateSignature(array $content): bool

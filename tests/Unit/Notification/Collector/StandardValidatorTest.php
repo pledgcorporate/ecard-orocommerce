@@ -63,4 +63,18 @@ class StandardValidatorTest extends TestCase
 
         self::assertFalse($validator->validate($content));
     }
+
+    public function testValidatesWithIncorrectStatus(): void
+    {
+        $content = (new StandardContentBuilder())
+            ->withStatus('failed')
+            ->withSignature('F40940F5FC30078D5E19470774F63F47FB577E56D66A49813D1E47490586CBBF')
+            ->build();
+        $validator = (new StandardValidatorBuilder())
+            ->withPaymentTransaction((new PaymentTransactionBuilder())->build())
+            ->withConfig((new PledgConfigBuilder())->withDefaultValues()->build())
+            ->build();
+
+        self::assertFalse($validator->validate($content));
+    }
 }

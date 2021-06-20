@@ -60,6 +60,13 @@ class StandardContentBuilder
         return $this;
     }
 
+    public function withStatus(string $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
     public function withSignature(string $signature): self
     {
         $this->signature = $signature;
