@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Pledg\Bundle\PaymentBundle\Notification\Collector;
 
-use Oro\Bundle\PaymentBundle\Method\Provider\PaymentMethodProviderInterface;
 use Pledg\Bundle\PaymentBundle\Method\Config\PledgConfig;
 use Pledg\Bundle\PaymentBundle\Method\Config\Provider\PledgConfigProviderInterface;
 use Pledg\Bundle\PaymentBundle\Provider\PaymentTransactionProviderInterface;
@@ -13,9 +12,6 @@ class StandardValidator implements ValidatorInterface
 {
     /** @var PaymentTransactionProviderInterface */
     protected $paymentTransactionProvider;
-
-    /** @var PaymentMethodProviderInterface  */
-    protected $paymentMethodProvider;
 
     /** @var PledgConfigProviderInterface */
     protected $pledgConfigProvider;
