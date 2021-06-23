@@ -11,7 +11,7 @@ use Oro\Bundle\PaymentBundle\Event\CallbackNotifyEvent;
 use Oro\Bundle\PaymentBundle\Event\CallbackReturnEvent;
 use Oro\Bundle\PaymentBundle\Method\Provider\PaymentMethodProviderInterface;
 use Pledg\Bundle\PaymentBundle\Method\PledgMethod;
-use Pledg\Bundle\PaymentBundle\Notification\Collector\ValidatorInterface;
+use Pledg\Bundle\PaymentBundle\Notification\Validator\ValidatorInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class PledgListener

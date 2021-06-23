@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Pledg\Bundle\PaymentBundle\Unit\Notification\Collector;
+namespace Tests\Pledg\Bundle\PaymentBundle\Unit\Notification\Validator;
 
 use Oro\Bundle\PaymentBundle\Entity\PaymentTransaction;
 use Pledg\Bundle\PaymentBundle\Method\Config\PledgConfig;
 use Pledg\Bundle\PaymentBundle\Method\Config\Provider\PledgConfigProviderInterface;
-use Pledg\Bundle\PaymentBundle\Notification\Collector\StandardValidator;
-use Pledg\Bundle\PaymentBundle\Notification\Collector\ValidatorInterface;
+use Pledg\Bundle\PaymentBundle\Notification\Validator\StandardValidator;
+use Pledg\Bundle\PaymentBundle\Notification\Validator\ValidatorInterface;
 use Pledg\Bundle\PaymentBundle\Provider\PaymentTransactionProviderInterface;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Pledg\Bundle\PaymentBundle\Notification\Collector;
+namespace Pledg\Bundle\PaymentBundle\Notification\Validator;
 
 use Pledg\Bundle\PaymentBundle\Method\Config\PledgConfig;
 use Pledg\Bundle\PaymentBundle\Method\Config\Provider\PledgConfigProviderInterface;

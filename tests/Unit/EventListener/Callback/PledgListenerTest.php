@@ -5,12 +5,12 @@ namespace Tests\Pledg\Bundle\PaymentBundle\Unit\EventListener\Callback;
 use Oro\Bundle\PaymentBundle\Event\AbstractCallbackEvent;
 use PHPUnit\Framework\TestCase;
 use Pledg\Bundle\PaymentBundle\EventListener\Callback\PledgListener;
-use Pledg\Bundle\PaymentBundle\Notification\Collector\StandardValidator;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\Pledg\Bundle\PaymentBundle\Unit\Event\CallbackNotifyEventBuilder;
 use Tests\Pledg\Bundle\PaymentBundle\Unit\Method\Config\PledgConfigBuilder;
 use Tests\Pledg\Bundle\PaymentBundle\Unit\Method\PledgMethodBuilder;
-use Tests\Pledg\Bundle\PaymentBundle\Unit\Notification\Collector\StandardValidatorBuilder;
+use Tests\Pledg\Bundle\PaymentBundle\Unit\Notification\Validator\StandardValidatorBuilder;
+use Tests\Pledg\Bundle\PaymentBundle\Unit\Notification\TransferContentBuilder;
 
 class PledgListenerTest extends TestCase
 {

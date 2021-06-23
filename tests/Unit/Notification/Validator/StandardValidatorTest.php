@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Pledg\Bundle\PaymentBundle\Unit\Notification\Collector;
+namespace Tests\Pledg\Bundle\PaymentBundle\Unit\Notification\Validator;
 
 use PHPUnit\Framework\TestCase;
-use Pledg\Bundle\PaymentBundle\Notification\Collector\ValidatorInterface;
+use Pledg\Bundle\PaymentBundle\Notification\Validator\ValidatorInterface;
 use Tests\Pledg\Bundle\PaymentBundle\Unit\Method\Config\PledgConfigBuilder;
 use Tests\Pledg\Bundle\PaymentBundle\Unit\Notification\StandardContentBuilder;
 use Tests\Pledg\Bundle\PaymentBundle\Unit\Oro\Entity\PaymentTransactionBuilder;
