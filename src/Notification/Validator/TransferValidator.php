@@ -57,6 +57,7 @@ class TransferValidator implements ValidatorInterface
         /** @var PledgConfig $pledgConfig */
         $pledgConfig = $this->pledgConfigProvider->getPaymentConfig($paymentTransaction->getPaymentMethod());
 
-        return $this->handler->verify($content[self::SIGNATURE_KEY], $pledgConfig->getClientSecret());
+        return $this->handler->verify($content[self::SIGNATURE_KEY], $pledgConfig->getClientSecret())
+            && isset($body['transfer_order_item_uid']);
     }
 }
