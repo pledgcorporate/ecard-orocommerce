@@ -4,6 +4,7 @@ namespace Tests\Pledg\Bundle\PaymentBundle\Unit\Method\Config;
 
 use Pledg\Bundle\PaymentBundle\Method\Config\PledgConfig;
 use Pledg\Bundle\PaymentBundle\Method\Config\PledgConfigInterface;
+use spec\Behat\Symfony2Extension\Specification\BundleFeatureLocatorSpec;
 
 class PledgConfigBuilder
 {
@@ -20,6 +21,13 @@ class PledgConfigBuilder
             PledgConfig::FIELD_CLIENT_SECRET => 'SECRET',
             PledgConfig::FIELD_PAYMENT_METHOD_IDENTIFIER => 12345
         ];
+
+        return $this;
+    }
+
+    public function withSecret(string $secret): self
+    {
+        $this->params[PledgConfig::FIELD_CLIENT_SECRET] = $secret;
 
         return $this;
     }

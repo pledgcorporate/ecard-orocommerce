@@ -36,6 +36,13 @@ class CallbackNotifyEventBuilder
         return $this;
     }
 
+    public function withData(array $data): self
+    {
+        $this->data = $data;
+
+        return $this;
+    }
+
     public function build(): CallbackNotifyEvent
     {
         $event = new CallbackNotifyEvent($this->data);

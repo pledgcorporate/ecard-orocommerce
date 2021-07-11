@@ -45,13 +45,17 @@ class StandardValidator implements ValidatorInterface
         $this->pledgConfigProvider = $pledgConfigProvider;
     }
 
-    public function supports(array $content): bool
+    private function supports(array $content): bool
     {
         return count(self::REQUIRED_KEYS) === count(array_intersect_key(array_flip(self::REQUIRED_KEYS), $content));
     }
 
     public function validate(array $content): bool
     {
+        if (false === $this->supports($content)) {
+            throw NotSupportedException::fromContent($content);
+        }
+
         return $this->withoutError($content)
             && $this->validateStatus($content)
             && $this->validateSignature($content);
