@@ -69,7 +69,14 @@ services:
 
     Pledg\Bundle\PaymentBundle\Method\Factory\PledgPaymentMethodFactory: ~
 
-    Pledg\Bundle\PaymentBundle\Notification\Validator\StandardValidator: ~
+    Pledg\Bundle\PaymentBundle\Notification\Validator\CompositeValidator:
+        arguments: [!tagged_iterator pledg_payment.notication.validator]
+    Pledg\Bundle\PaymentBundle\Notification\Validator\StandardValidator:
+        tags:
+            - { name: pledg_payment.notication.validator }
+    Pledg\Bundle\PaymentBundle\Notification\Validator\TransferValidator:
+        tags:
+            - { name: pledg_payment.notication.validator }
 
     Pledg\Bundle\PaymentBundle\Method\Provider\PledgMethodProvider:
         tags:
