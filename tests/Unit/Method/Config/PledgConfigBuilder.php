@@ -4,6 +4,7 @@ namespace Tests\Pledg\Bundle\PaymentBundle\Unit\Method\Config;
 
 use Pledg\Bundle\PaymentBundle\Method\Config\PledgConfig;
 use Pledg\Bundle\PaymentBundle\Method\Config\PledgConfigInterface;
+use spec\Behat\Symfony2Extension\Specification\BundleFeatureLocatorSpec;
 
 class PledgConfigBuilder
 {
@@ -17,9 +18,16 @@ class PledgConfigBuilder
             PledgConfig::FIELD_SHORT_LABEL => 'short field label',
             PledgConfig::FIELD_ADMIN_LABEL => 'ecommerce channel',
             PledgConfig::FIELD_CLIENT_IDENTIFIER => '1234567890987654321',
-            PledgConfig::FIELD_CLIENT_SECRET => 'secretsecretsecretsecret',
+            PledgConfig::FIELD_CLIENT_SECRET => 'SECRET',
             PledgConfig::FIELD_PAYMENT_METHOD_IDENTIFIER => 12345
         ];
+
+        return $this;
+    }
+
+    public function withSecret(string $secret): self
+    {
+        $this->params[PledgConfig::FIELD_CLIENT_SECRET] = $secret;
 
         return $this;
     }

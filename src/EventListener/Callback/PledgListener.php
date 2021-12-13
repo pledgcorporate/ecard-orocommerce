@@ -11,6 +11,7 @@ use Oro\Bundle\PaymentBundle\Event\CallbackNotifyEvent;
 use Oro\Bundle\PaymentBundle\Event\CallbackReturnEvent;
 use Oro\Bundle\PaymentBundle\Method\Provider\PaymentMethodProviderInterface;
 use Pledg\Bundle\PaymentBundle\Method\PledgMethod;
+use Pledg\Bundle\PaymentBundle\Notification\Validator\ValidatorInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class PledgListener
@@ -22,12 +23,20 @@ class PledgListener
     private $paymentMethodProvider;
 
     /** @var RequestStack */
-    protected $requestStack;
+    private $requestStack;
 
-    public function __construct(PaymentMethodProviderInterface $paymentMethodProvider, RequestStack $requestStack)
+    /** @var ValidatorInterface */
+    private $notificationValidator;
+
+    public function __construct(
+        PaymentMethodProviderInterface $paymentMethodProvider,
+        RequestStack $requestStack,
+        ValidatorInterface $validator
+    )
     {
         $this->paymentMethodProvider = $paymentMethodProvider;
         $this->requestStack = $requestStack;
+        $this->notificationValidator = $validator;
     }
 
     public function onReturn(CallbackReturnEvent $event): void
@@ -42,12 +51,8 @@ class PledgListener
             return;
         }
 
-        if (isset($event->getData()[self::PLEDG_ERROR])) {
-            $event->markFailed();
-            return;
-        }
-
         if (!isset($event->getData()[self::PLEDG_RESULT])) {
+            $event->markFailed();
             return;
         }
 
@@ -85,6 +90,11 @@ class PledgListener
         }
 
         if (false === $this->paymentMethodProvider->hasPaymentMethod($paymentTransaction->getPaymentMethod())) {
+            return;
+        }
+
+        if (false === $this->notificationValidator->validate($event->getData())) {
+            $event->markFailed();
             return;
         }
 
